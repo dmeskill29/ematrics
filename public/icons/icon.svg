@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#009688;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00695C;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F0F0F0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="256" cy="256" r="240" fill="url(#grad1)" stroke="#004D40" stroke-width="4"/>
+  
+  <!-- Chart/Analytics Icon -->
+  <g transform="translate(170, 150)">
+    <!-- Bar Chart -->
+    <rect x="20" y="120" width="25" height="80" fill="url(#grad2)" rx="4"/>
+    <rect x="55" y="80" width="25" height="120" fill="url(#grad2)" rx="4"/>
+    <rect x="90" y="100" width="25" height="100" fill="url(#grad2)" rx="4"/>
+    <rect x="125" y="40" width="25" height="160" fill="url(#grad2)" rx="4"/>
+    
+    <!-- AI Brain/Network -->
+    <g transform="translate(10, 10)">
+      <!-- Neural network nodes -->
+      <circle cx="30" cy="30" r="8" fill="#FFF" opacity="0.9"/>
+      <circle cx="80" cy="20" r="8" fill="#FFF" opacity="0.9"/>
+      <circle cx="130" cy="35" r="8" fill="#FFF" opacity="0.9"/>
+      <circle cx="60" cy="60" r="8" fill="#FFF" opacity="0.9"/>
+      <circle cx="110" cy="65" r="8" fill="#FFF" opacity="0.9"/>
+      
+      <!-- Neural network connections -->
+      <line x1="30" y1="30" x2="80" y2="20" stroke="#FFF" stroke-width="2" opacity="0.6"/>
+      <line x1="80" y1="20" x2="130" y2="35" stroke="#FFF" stroke-width="2" opacity="0.6"/>
+      <line x1="30" y1="30" x2="60" y2="60" stroke="#FFF" stroke-width="2" opacity="0.6"/>
+      <line x1="80" y1="20" x2="60" y2="60" stroke="#FFF" stroke-width="2" opacity="0.6"/>
+      <line x1="60" y1="60" x2="110" y2="65" stroke="#FFF" stroke-width="2" opacity="0.6"/>
+      <line x1="130" y1="35" x2="110" y2="65" stroke="#FFF" stroke-width="2" opacity="0.6"/>
+    </g>
+  </g>
+  
+  <!-- Letter 'E' for Ematrics -->
+  <text x="256" y="400" font-family="Arial, sans-serif" font-size="120" font-weight="bold" fill="#FFF" text-anchor="middle">E</text>
+</svg>
