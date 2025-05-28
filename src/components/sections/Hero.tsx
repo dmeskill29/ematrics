@@ -2,9 +2,6 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
-import { ArrowRightIcon, PlayIcon } from "@heroicons/react/24/outline";
-import { Suspense } from "react";
 
 // Lazy load the background decoration for better performance
 const BackgroundDecoration = () => (
@@ -106,7 +103,7 @@ export default function Hero() {
               </h2>
               <p className="text-base leading-relaxed text-gray-300 mb-6">
                 Ematrics provides core AI-powered services to rebuild your sales
-                team's performance with extensive training simulations,
+                team&apos;s performance with extensive training simulations,
                 real-time call assistance, and detailed analytics. Our AI
                 technology helps sales representatives prepare for calls through
                 interactive training scenarios, offers live guidance during
@@ -121,9 +118,9 @@ export default function Hero() {
                 detailed and analyzed dashboards with personalized coaching
                 recommendations, individual rep tracking, and predictive
                 analytics that highlight improvement opportunities. Beyond mere
-                sales monitoring, Ematrics' intelligent AI actively guides teams
-                in real-time assistance and strategic analysis and feedback,
-                leading to consistent revenue growth.
+                sales monitoring, Ematrics&apos; intelligent AI actively guides
+                teams in real-time assistance and strategic analysis and
+                feedback, leading to consistent revenue growth.
               </p>
             </div>
             <div className="relative">

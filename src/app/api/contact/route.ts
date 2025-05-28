@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
       { message: 'Contact form submitted successfully' },
       { status: 200 }
     )
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Contact form error:', error)
     return NextResponse.json(
       { error: 'Internal server error' },
@@ -71,7 +71,15 @@ export async function POST(request: NextRequest) {
 }
 
 // HubSpot API integration
-async function sendToHubSpot(contactData: any) {
+interface ContactData {
+  email: string;
+  name: string;
+  company?: string;
+  message?: string;
+  phone?: string;
+}
+
+async function sendToHubSpot(contactData: ContactData) {
   const hubspotApiKey = process.env.HUBSPOT_API_KEY
   if (!hubspotApiKey) return
 

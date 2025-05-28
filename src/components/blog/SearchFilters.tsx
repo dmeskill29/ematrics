@@ -2,13 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import {
-  BlogPost,
-  getBlogPosts,
-  getBlogPostsByCategory,
-  getBlogPostsByTag,
-  blogCategories,
-} from "@/lib/blog";
+import { getBlogPosts, blogCategories } from "@/lib/blog";
 
 interface SearchFiltersProps {
   onSearchChange: (query: string) => void;
