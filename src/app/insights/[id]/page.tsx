@@ -101,7 +101,8 @@ const getBlogPost = (id: string) => {
   return posts[id as keyof typeof posts];
 };
 
-type PageProps = { params: { id: string } };
+type Params = { id: string };
+type PageProps = { params: Params };
 
 export async function generateMetadata({
   params,
