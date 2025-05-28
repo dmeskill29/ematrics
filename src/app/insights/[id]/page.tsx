@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import type { PageProps } from 'next'; // Import Next.js PageProps type
 import Link from "next/link";
 import {
   CalendarIcon,
@@ -101,12 +102,11 @@ const getBlogPost = (id: string) => {
   return posts[id as keyof typeof posts];
 };
 
-type Params = { id: string };
-type PageProps = { params: Params };
+// Remove custom type aliases and use Next.js PageProps
 
 export async function generateMetadata({
   params,
-}: PageProps): Promise<Metadata> {
+}: PageProps<{ id: string }>): Promise<Metadata> {
   const post = getBlogPost(params.id);
 
   if (!post) {
@@ -122,7 +122,7 @@ export async function generateMetadata({
   };
 }
 
-export default function BlogPostPage({ params }: PageProps) {
+export default function BlogPostPage({ params }: PageProps<{ id: string }>) {
   const post = getBlogPost(params.id);
 
   if (!post) {
