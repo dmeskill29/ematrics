@@ -1,14 +1,21 @@
-import { Metadata } from 'next'
-import Link from 'next/link'
-import { CalendarIcon, UserIcon, ArrowLeftIcon, ShareIcon } from '@heroicons/react/24/outline'
+import { Metadata } from "next";
+import Link from "next/link";
+import {
+  CalendarIcon,
+  UserIcon,
+  ArrowLeftIcon,
+  ShareIcon,
+} from "@heroicons/react/24/outline";
 
 // Mock data - in a real app, this would come from a CMS or database
 const getBlogPost = (id: string) => {
   const posts = {
-    '1': {
+    "1": {
       id: 1,
-      title: "The Future of Sales Coaching: How AI is Revolutionizing Team Performance",
-      excerpt: "Discover how artificial intelligence is transforming sales coaching from reactive feedback to proactive, real-time guidance that drives measurable results.",
+      title:
+        "The Future of Sales Coaching: How AI is Revolutionizing Team Performance",
+      excerpt:
+        "Discover how artificial intelligence is transforming sales coaching from reactive feedback to proactive, real-time guidance that drives measurable results.",
       content: `
         <p>Sales coaching has traditionally been a reactive process - managers review calls after they've happened, provide feedback during weekly one-on-ones, and hope that insights stick. But what if we could flip this model on its head?</p>
 
@@ -87,45 +94,47 @@ const getBlogPost = (id: string) => {
       readTime: "8 min read",
       category: "AI & Technology",
       tags: ["AI", "Sales Coaching", "Performance", "Technology"],
-      image: "/api/placeholder/800/400"
-    }
-  }
-  
-  return posts[id as keyof typeof posts]
-}
+      image: "/api/placeholder/800/400",
+    },
+  };
 
-interface BlogPostPageProps {
-  params: {
-    id: string
-  }
-}
+  return posts[id as keyof typeof posts];
+};
 
-export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
-  const post = getBlogPost(params.id)
-  
+type PageProps = { params: { id: string } };
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const post = getBlogPost(params.id);
+
   if (!post) {
     return {
-      title: 'Post Not Found | Ematrics',
-    }
+      title: "Post Not Found | Ematrics",
+    };
   }
 
   return {
     title: `${post.title} | Ematrics Insights`,
     description: post.excerpt,
-    keywords: post.tags.join(', '),
-  }
+    keywords: post.tags.join(", "),
+  };
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = getBlogPost(params.id)
+export default function BlogPostPage({ params }: PageProps) {
+  const post = getBlogPost(params.id);
 
   if (!post) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-charcoal-900 mb-4">Post Not Found</h1>
-          <p className="text-charcoal-600 mb-8">The article you&apos;re looking for doesn&apos;t exist.</p>
-          <Link 
+          <h1 className="text-3xl font-bold text-charcoal-900 mb-4">
+            Post Not Found
+          </h1>
+          <p className="text-charcoal-600 mb-8">
+            The article you&apos;re looking for doesn&apos;t exist.
+          </p>
+          <Link
             href="/insights"
             className="bg-primary-500 text-white px-6 py-3 rounded-lg hover:bg-primary-600 transition-colors"
           >
@@ -133,7 +142,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           </Link>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -141,24 +150,24 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
       {/* Header */}
       <header className="bg-gray-50 py-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link 
+          <Link
             href="/insights"
             className="inline-flex items-center text-primary-600 hover:text-primary-700 mb-6"
           >
             <ArrowLeftIcon className="w-4 h-4 mr-2" />
             Back to Insights
           </Link>
-          
+
           <div className="mb-6">
             <span className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm font-medium">
               {post.category}
             </span>
           </div>
-          
+
           <h1 className="text-4xl font-bold text-charcoal-900 mb-6">
             {post.title}
           </h1>
-          
+
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center">
@@ -169,7 +178,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                 <p className="text-charcoal-600">{post.authorRole}</p>
               </div>
             </div>
-            
+
             <div className="text-right">
               <div className="flex items-center text-sm text-charcoal-500 space-x-4 mb-2">
                 <span className="flex items-center">
@@ -190,13 +199,15 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
       {/* Featured Image */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="bg-gradient-to-br from-primary-100 to-teal-100 rounded-xl h-96 flex items-center justify-center mb-8">
-          <span className="text-primary-600 font-medium">Article Featured Image</span>
+          <span className="text-primary-600 font-medium">
+            Article Featured Image
+          </span>
         </div>
       </div>
 
       {/* Article Content */}
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <div 
+        <div
           className="prose prose-lg prose-charcoal max-w-none
             prose-headings:text-charcoal-900 prose-headings:font-bold
             prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4
@@ -229,10 +240,15 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               <UserIcon className="w-8 h-8 text-white" />
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-charcoal-900">{post.author}</h3>
+              <h3 className="text-lg font-semibold text-charcoal-900">
+                {post.author}
+              </h3>
               <p className="text-charcoal-600 mb-3">{post.authorRole}</p>
               <p className="text-charcoal-700">
-                {post.author} has over 10 years of experience in sales leadership and has helped hundreds of sales teams optimize their performance through data-driven coaching and AI-powered insights.
+                {post.author} has over 10 years of experience in sales
+                leadership and has helped hundreds of sales teams optimize their
+                performance through data-driven coaching and AI-powered
+                insights.
               </p>
             </div>
           </div>
@@ -242,22 +258,28 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
       {/* Related Articles */}
       <section className="bg-gray-50 py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-charcoal-900 mb-8">Related Articles</h2>
+          <h2 className="text-2xl font-bold text-charcoal-900 mb-8">
+            Related Articles
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Mock related articles */}
             {[
               {
-                title: "5 Objection Handling Techniques That Actually Work in 2024",
-                excerpt: "Modern buyers are more informed than ever. Here are the proven objection handling strategies...",
+                title:
+                  "5 Objection Handling Techniques That Actually Work in 2024",
+                excerpt:
+                  "Modern buyers are more informed than ever. Here are the proven objection handling strategies...",
                 category: "Sales Techniques",
-                readTime: "6 min read"
+                readTime: "6 min read",
               },
               {
-                title: "Building a Data-Driven Sales Culture: Metrics That Matter",
-                excerpt: "Learn which sales metrics actually predict success and how to build a culture where data drives decisions...",
+                title:
+                  "Building a Data-Driven Sales Culture: Metrics That Matter",
+                excerpt:
+                  "Learn which sales metrics actually predict success and how to build a culture where data drives decisions...",
                 category: "Analytics",
-                readTime: "7 min read"
-              }
+                readTime: "7 min read",
+              },
             ].map((article, index) => (
               <div key={index} className="bg-white rounded-lg p-6 shadow-sm">
                 <span className="bg-primary-100 text-primary-700 px-2 py-1 rounded text-xs font-medium">
@@ -269,12 +291,14 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                 <p className="text-charcoal-600 text-sm mb-3">
                   {article.excerpt}
                 </p>
-                <span className="text-xs text-charcoal-500">{article.readTime}</span>
+                <span className="text-xs text-charcoal-500">
+                  {article.readTime}
+                </span>
               </div>
             ))}
           </div>
         </div>
       </section>
     </div>
-  )
+  );
 }
