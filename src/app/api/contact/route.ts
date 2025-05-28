@@ -77,6 +77,12 @@ interface ContactData {
   company?: string;
   message?: string;
   phone?: string;
+  teamSize?: string;
+  inquiryType?: string;
+  source?: string;
+  userAgent?: string;
+  ip?: string;
+  timestamp?: string;
 }
 
 async function sendToHubSpot(contactData: ContactData) {
